@@ -151,4 +151,9 @@ export interface ReadMergeModifyContext {
   variables?: Record<string, any>;
   // A JSON.stringify-serialized version of context.variables.
   varString?: string;
+  incomingById?: Map<string, {
+    storeObject: StoreObject;
+    mergeTree?: MergeTree;
+    fieldNodeSet: Set<FieldNode>;
+  }>;
 }

@@ -59,6 +59,7 @@ export interface FieldSpecifier {
 
 export interface ReadFieldOptions extends FieldSpecifier {
   from?: StoreObject | Reference;
+  fallbackToIncoming?: boolean;
 }
 
 export interface ReadFieldFunction {

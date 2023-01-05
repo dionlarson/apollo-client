@@ -804,6 +804,23 @@ export class Policies {
       ) as SafeReadonly<V>;
     }
 
+    if (!existing && options.fallbackToIncoming) {
+      if (isReference(objectOrReference)) {
+        const info = context.incomingById?.get(objectOrReference.__ref);
+        if (info) {
+          const result = this.readField<V>({
+            ...options,
+            from: info.storeObject,
+            fallbackToIncoming: false,
+          }, context);
+
+          if (result !== void 0) {
+            return result;
+          }
+        }
+      }
+    }
+
     return existing;
   }
 
